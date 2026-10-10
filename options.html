@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tab 去重助手设置</title>
+    <link rel="stylesheet" href="ui.css">
+  </head>
+  <body class="options-page">
+    <main class="options-shell">
+      <header class="options-header">
+        <div class="brand">
+          <div class="brand-mark brand-mark-large" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <span class="eyebrow">扩展设置</span>
+            <h1>Tab 去重助手</h1>
+            <p>让相同页面只保留一个标签页，并在重复打开时回到原页面。</p>
+          </div>
+        </div>
+      </header>
+
+      <form id="settingsForm">
+        <section class="settings-section">
+          <div class="section-title">
+            <div>
+              <h2>运行状态</h2>
+              <p>暂停后不会关闭或切换任何标签页。</p>
+            </div>
+            <label class="switch" title="启用自动去重">
+              <input id="enabledToggle" type="checkbox" aria-label="启用自动去重">
+              <span class="switch-track"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <div class="section-title">
+            <div>
+              <h2>匹配策略</h2>
+              <p>这些选项会直接影响哪些页面被视为重复。</p>
+            </div>
+          </div>
+
+          <label class="choice-row">
+            <input id="ignoreHashToggle" type="checkbox">
+            <span>
+              <strong>忽略页面内的锚点</strong>
+              <small>例如将 <code>docs#install</code> 和 <code>docs#usage</code> 视为同一页。</small>
+            </span>
+          </label>
+
+          <label class="choice-row">
+            <input id="preservePinnedToggle" type="checkbox">
+            <span>
+              <strong>保护置顶标签页</strong>
+              <small>置顶标签页既不会被当作原页面，也不会被自动关闭。</small>
+            </span>
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <div class="section-title">
+            <div>
+              <h2>忽略规则</h2>
+              <p>每行一条规则，支持域名、路径和通配符。</p>
+            </div>
+          </div>
+
+          <label class="field-label" for="ignoredPatterns">网址规则</label>
+          <textarea
+            id="ignoredPatterns"
+            rows="7"
+            spellcheck="false"
+            placeholder="example.com&#10;mail.example.com/inbox*&#10;*://*.internal.example.com/*"
+          ></textarea>
+          <p class="field-help">
+            <code>example.com</code> 会匹配该域名及其子域名；使用 <code>*</code> 可匹配任意字符。
+          </p>
+        </section>
+
+        <section class="settings-section">
+          <div class="section-title">
+            <div>
+              <h2>网站放行名单</h2>
+              <p>这些网站可以同时打开多个相同页面。</p>
+            </div>
+          </div>
+          <div id="siteExceptions" class="site-exceptions"></div>
+        </section>
+
+        <section class="settings-section stats-section">
+          <div>
+            <span class="eyebrow">累计统计</span>
+            <strong id="blockedCount">0</strong>
+            <p>已自动合并的重复标签页</p>
+          </div>
+          <button id="resetCountButton" class="button button-secondary" type="button">
+            清零统计
+          </button>
+        </section>
+
+        <div class="save-bar">
+          <span id="saveStatus" class="save-status" aria-live="polite"></span>
+          <button class="button button-primary" type="submit">保存设置</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="common.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

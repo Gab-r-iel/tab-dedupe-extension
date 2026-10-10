@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tab 去重助手</title>
+    <link rel="stylesheet" href="ui.css">
+  </head>
+  <body class="popup-page">
+    <main class="popup-shell">
+      <header class="popup-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <h1>Tab 去重助手</h1>
+            <p id="statusText">正在读取设置...</p>
+          </div>
+        </div>
+
+        <label class="switch" title="开关自动去重">
+          <input id="enabledToggle" type="checkbox" aria-label="启用自动去重">
+          <span class="switch-track"></span>
+        </label>
+      </header>
+
+      <section class="stat-strip" aria-live="polite">
+        <strong id="blockedCount">0</strong>
+        <div>
+          <span>已自动合并</span>
+          <small>重复标签页</small>
+        </div>
+      </section>
+
+      <section class="site-section">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">当前网站</span>
+            <strong id="currentSite">不可用</strong>
+          </div>
+          <span id="siteState" class="state-pill">检测中</span>
+        </div>
+        <p id="siteHint">正在读取当前标签页...</p>
+        <button id="toggleSiteButton" class="button button-secondary" type="button" disabled>
+          在本站允许多开
+        </button>
+      </section>
+
+      <footer class="popup-footer">
+        <button id="openOptionsButton" class="text-button" type="button">
+          设置忽略规则和策略
+        </button>
+        <span id="saveStatus" class="save-status" aria-live="polite"></span>
+      </footer>
+    </main>
+
+    <script src="common.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
